@@ -2,9 +2,9 @@
   "slug": "model-based-design-platform-for-engineers",
   "version": "v1.0.0",
   "archiveFilename": "model-based-design-platform-for-engineers-v1.0.0.tar.gz",
-  "archiveSizeBytes": 33296,
-  "sha256": "1cb450905ac133e240d6f3f0ab092a1e68b90a420ee8d0944b4e5806a177aba1",
+  "archiveSizeBytes": 32212,
+  "sha256": "a56240c7a82d7a14c287f81663f39af867177b5907f05429860169f7d995a91d",
   "filesIncluded": 39,
-  "createdAt": "2026-09-30T16:15:54.763Z",
+  "createdAt": "2026-09-30T16:39:57.739Z",
   "author": "Felipe Madison (@FelipeMadson)"
 }

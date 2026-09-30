@@ -32,6 +32,14 @@
 
 ---
 
+## 📐 Arquitetura do Sistema & Fluxo de Dados
+
+<p align="center">
+  <img src="docs/assets/architecture.svg" alt="Arquitetura & Fluxo de Dados - Model Based Design Platform For Engineers" width="920" />
+</p>
+
+---
+
 ## 🎮 Live Interactive Playground (No Backend Required)
 
 Experimente o estúdio de localização com matriz multi-idioma em tempo real, validador de plurais ICU e exportação instantânea:
