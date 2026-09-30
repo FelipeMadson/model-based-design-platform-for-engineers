@@ -1,11 +1,12 @@
 {
-  "name": "model-based-design-platform-for-engineers",
+  "name": "@felipemadson/model-based-design-platform-for-engineers",
   "version": "1.1.0",
   "description": "Engineers and scientists use outdated, monolithic tools for complex system design and simulation tasks.",
   "type": "module",
   "main": "src/index.ts",
   "bin": {
-    "model-based-design-platform-for-engineers": "src/cli/cli.ts"
+    "model-based-design-platform-for-engineers": "./bin/cli.js",
+    "@felipemadson/model-based-design-platform-for-engineers": "./bin/cli.js"
   },
   "scripts": {
     "start": "node --experimental-strip-types src/index.ts",
