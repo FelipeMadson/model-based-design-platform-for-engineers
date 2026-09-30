@@ -34,7 +34,7 @@
 
 ## 🎮 Live Interactive Playground (No Backend Required)
 
-Experimente o simulador em tempo real executando 100% no seu navegador com WebCrypto, Token Bucket e Write-Ahead Logging:
+Experimente o estúdio de localização com matriz multi-idioma em tempo real, validador de plurais ICU e exportação instantânea:
 👉 **[Acessar Live Playground do Model Based Design Platform For Engineers](https://felipemadson.github.io/model-based-design-platform-for-engineers/)**
 
 ## 🖥️ Demonstração em Terminal Vetorial (Execução & Benchmarks)

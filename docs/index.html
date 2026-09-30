@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Playground — Model Based Design Platform For Engineers | Felipe Madison (@FelipeMadson)</title>
+  <title>Localization & Engineering Studio — Model Based Design Platform For Engineers | Felipe Madison (@FelipeMadson)</title>
   <style>
     :root {
-      --bg: #f7f8f5;
-      --card-bg: #ffffff;
-      --text: #1d2520;
-      --muted: #526359;
-      --line: #d8ded8;
-      --border: #e3e8e2;
-      --green: #145e4d;
-      --green-light: #eaf1ea;
-      --green-hover: #0f4639;
-      --red: #9b433e;
-      --yellow: #b45309;
-      --font-serif: "Newsreader", "Charter", "Georgia", serif;
-      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+      --bg: #faf8f5;
+      --card: #ffffff;
+      --border: #e7e5e4;
+      --line: #d6d3d1;
+      --text: #1c1917;
+      --muted: #78716c;
+      --violet: #7c3aed;
+      --violet-light: #f5f3ff;
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --amber: #d97706;
+      --font-serif: "Charter", "Newsreader", "Georgia", serif;
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,408 +27,275 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-sans);
-      line-height: 1.5;
-      padding: 32px 20px 60px;
-    }
-
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
+      padding: 24px clamp(16px, 4vw, 48px);
+      min-height: 100vh;
     }
 
     header {
-      border-bottom: 2px solid var(--text);
+      border-bottom: 1px solid var(--border);
       padding-bottom: 20px;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: flex-start;
       flex-wrap: wrap;
       gap: 16px;
     }
 
-    .header-main h1 {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      font-weight: 500;
-      color: var(--text);
-      letter-spacing: -0.02em;
+    .badge-studio {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--violet-light);
+      border: 1px solid #ddd6fe;
+      color: var(--violet);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       margin-bottom: 6px;
     }
 
-    .eyebrow {
-      font-size: 0.76rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--green);
-      margin-bottom: 4px;
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 600;
+      color: #1c1917;
+      margin-bottom: 6px;
     }
 
-    .author-badge {
+    .author-tag {
       font-size: 0.85rem;
       color: var(--muted);
       display: flex;
       gap: 8px;
       align-items: center;
     }
-
-    .badge-live {
-      background: var(--green-light);
-      color: var(--green);
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-weight: 700;
-      font-size: 0.75rem;
-    }
+    .author-tag a { color: var(--violet); text-decoration: none; font-weight: 600; }
+    .author-tag a:hover { text-decoration: underline; }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+      grid-template-columns: 2fr 1fr;
       gap: 24px;
       margin-bottom: 32px;
     }
+    @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } }
 
     .panel {
-      background: var(--card-bg);
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       padding: 24px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
 
     .panel h2 {
       font-family: var(--font-serif);
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 600;
-      margin-bottom: 12px;
+      color: #1c1917;
+      margin-bottom: 14px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 8px;
     }
 
-    .panel p.desc {
-      font-size: 0.88rem;
-      color: var(--muted);
+    /* Translation Matrix Table */
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
       margin-bottom: 16px;
     }
-
-    .control-group {
-      margin-bottom: 14px;
-    }
-
-    label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+    .matrix-table th {
+      text-align: left;
+      padding: 10px 12px;
+      background: #f5f5f4;
       color: var(--muted);
-      margin-bottom: 6px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
     }
+    .matrix-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #f5f5f4;
+    }
+    .key-cell { font-family: var(--font-mono); font-size: 0.8rem; color: var(--violet); font-weight: 600; }
 
     input[type="text"], input[type="range"] {
       width: 100%;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      font-family: var(--font-mono);
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
       font-size: 0.85rem;
-      background: #fafbfa;
+      outline: none;
     }
+    input[type="text"]:focus { border-color: var(--violet); }
 
-    button {
-      background: var(--green);
-      color: #fff;
+    .btn-action {
+      background: var(--violet);
+      color: #ffffff;
       border: none;
-      padding: 9px 16px;
-      border-radius: 4px;
-      font-size: 0.85rem;
+      padding: 10px 16px;
+      border-radius: 8px;
       font-weight: 600;
+      font-size: 0.85rem;
       cursor: pointer;
-      transition: background 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
     }
+    .btn-action:hover { background: #6d28d9; }
 
-    button:hover { background: var(--green-hover); }
-    button.secondary {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--line);
-    }
-    button.secondary:hover { background: #f0f3ee; }
-
-    .console-box {
-      background: #0f172a;
-      color: #e2e8f0;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
+    .code-preview {
+      background: #1c1917;
+      color: #f5f5f4;
+      border-radius: 8px;
       padding: 14px;
-      border-radius: 4px;
-      max-height: 180px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      max-height: 220px;
       overflow-y: auto;
       white-space: pre-wrap;
-      word-break: break-all;
       margin-top: 12px;
     }
 
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-      border-bottom: 1px dashed var(--line);
-      font-size: 0.85rem;
-    }
-
     footer {
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--border);
       padding-top: 20px;
-      font-size: 0.82rem;
-      color: var(--muted);
       display: flex;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.84rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="header-main">
-        <p class="eyebrow">Simulador Arquitetural em Tempo Real</p>
-        <h1>Model Based Design Platform For Engineers — Live Playground</h1>
-        <div class="author-badge">
-          <span>Engenharia por <strong>Felipe Madison</strong> (@FelipeMadson)</span>
-          <span>·</span>
-          <span class="badge-live">● 100% In-Browser WebCrypto &amp; WASM/ESM</span>
-        </div>
-      </div>
-      <div>
-        <a href="https://github.com/FelipeMadson/model-based-design-platform-for-engineers" target="_blank" rel="noopener">
-          <button type="button" class="secondary">Ver Repositório no GitHub ↗</button>
-        </a>
-      </div>
-    </header>
+  <header>
+    <div>
+      <div class="badge-studio">Multi-Platform Studio & Localization</div>
+      <h1>Model Based Design Platform For Engineers</h1>
+      <p style="color: var(--muted); font-size: 0.92rem; margin-top: 4px;">Ambiente de validação sintática ICU, sincronização de matriz de traduções e exportação simultânea para Web (JSON), Android (XML) e iOS (.strings).</p>
+    </div>
+    <div class="author-tag">
+      <span>Arquiteto:</span>
+      <a href="https://github.com/FelipeMadson" target="_blank" rel="noopener">Felipe Madison (@FelipeMadson)</a>
+    </div>
+  </header>
 
-    <div class="grid">
-      <!-- 1. Criptografia & Vault HMAC Timing-Safe -->
-      <div class="panel">
-        <h2>🛡️ Cofre Criptográfico HMAC-SHA256</h2>
-        <p class="desc">Assinatura determinística via Web Crypto API nativa com verificação imune a timing attacks.</p>
-        
-        <div class="control-group">
-          <label>Chave Secreta (Master Secret)</label>
-          <input type="text" id="hmacSecret" value="sec_vault_master_key_9918" />
-        </div>
-        <div class="control-group">
-          <label>Payload / Registro de Dados</label>
-          <input type="text" id="hmacPayload" value='{"tenantId":"acme-corp","action":"transfer","amount":1500}' />
-        </div>
-        <button type="button" onclick="computeHmacSignature()">Assinar e Validar Registro ↗</button>
+  <div class="grid">
+    <!-- Painel 1: Matriz de Chaves e Locales -->
+    <div class="panel">
+      <h2>
+        <span>Matriz de Localização Multi-Idioma</span>
+        <span style="font-size: 0.78rem; background: var(--emerald-light); color: var(--emerald); padding: 3px 8px; border-radius: 4px; font-weight: 700;">100% Sincronizado</span>
+      </h2>
 
-        <div class="console-box" id="hmacLog">Clique em "Assinar e Validar" para calcular o hash HMAC em tempo real.</div>
-      </div>
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Chave (Key)</th>
+            <th>Inglês (en-US)</th>
+            <th>Português (pt-BR)</th>
+            <th>Espanhol (es-ES)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="key-cell">app.title</td>
+            <td>Enterprise Platform</td>
+            <td>Plataforma Corporativa</td>
+            <td>Plataforma Empresarial</td>
+          </tr>
+          <tr>
+            <td class="key-cell">btn.checkout</td>
+            <td>Confirm & Deploy</td>
+            <td>Confirmar & Publicar</td>
+            <td>Confirmar y Desplegar</td>
+          </tr>
+          <tr>
+            <td class="key-cell">alert.success</td>
+            <td>Changes saved successfully</td>
+            <td>Alterações salvas com sucesso</td>
+            <td>Cambios guardados con éxito</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <!-- 2. Token-Bucket Rate Limiter -->
-      <div class="panel">
-        <h2>⏱️ Token-Bucket Rate Limiter</h2>
-        <p class="desc">Algoritmo clássico de controle de vazão com recarga suave e proteção contra rajadas.</p>
-        
-        <div class="control-group">
-          <label>Capacidade Máxima: <span id="capacityVal">5 tokens</span></label>
-          <input type="range" id="bucketCap" min="1" max="20" value="5" oninput="updateBucketCap(this.value)" />
-        </div>
-        <div class="control-group">
-          <div class="stat-row">
-            <span>Tokens Disponíveis:</span>
-            <strong id="tokensAvailable">5</strong>
-          </div>
-          <div class="stat-row">
-            <span>Taxa de Recarga:</span>
-            <span>2 tokens/segundo</span>
-          </div>
-        </div>
-        <div style="display:flex; gap:10px; margin-top:12px;">
-          <button type="button" onclick="acquireToken()">Consumir 1 Token</button>
-          <button type="button" class="secondary" onclick="acquireBurst(3)">Rajada de 3</button>
-        </div>
-
-        <div class="console-box" id="bucketLog">Sistema inicializado com cota cheia.</div>
-      </div>
-
-      <!-- 3. Write-Ahead Logging (WAL) & Crash Recovery -->
-      <div class="panel">
-        <h2>💾 Storage WAL &amp; Recuperação Determinística</h2>
-        <p class="desc">Persistência atômica com diário Write-Ahead e reconstrução garantida de integridade.</p>
-        
-        <div class="control-group">
-          <label>Registro a Persistir</label>
-          <input type="text" id="walRecordInput" value="Registro #104 — Evento de domínio emitido" />
-        </div>
-        <div style="display:flex; gap:10px;">
-          <button type="button" onclick="appendWalRecord()">Gravar no WAL</button>
-          <button type="button" class="secondary" onclick="simulateWalCrashAndReplay()">Simular Crash &amp; Replay ↺</button>
-        </div>
-
-        <div class="console-box" id="walLog">Log vazio. Grave novos registros para construir a cadeia imutável.</div>
-      </div>
-
-      <!-- 4. Telemetria Prometheus em Tempo Real -->
-      <div class="panel">
-        <h2>📊 Telemetria Prometheus (P50, P95, P99)</h2>
-        <p class="desc">Coleta nativa de latência sub-milissegundo e exportação no padrão Prometheus.</p>
-        
-        <div class="control-group">
-          <button type="button" onclick="generateSimulatedTraffic()">Gerar Carga Sintética (100 ops)</button>
-        </div>
-        <div class="control-group">
-          <div class="stat-row">
-            <span>P50 Latency (Mediana):</span>
-            <strong id="p50Val">0.38 ms</strong>
-          </div>
-          <div class="stat-row">
-            <span>P95 Latency:</span>
-            <strong id="p95Val">0.82 ms</strong>
-          </div>
-          <div class="stat-row">
-            <span>P99 Latency:</span>
-            <strong id="p99Val">1.15 ms</strong>
-          </div>
-        </div>
-
-        <div class="console-box" id="promMetricsLog"># HELP app_http_requests_total Total requests processed
-app_http_requests_total 0
-# HELP app_p99_latency_seconds Latency P99
-app_p99_latency_seconds 0.00115</div>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn-action" onclick="exportPlatform('json')">📦 Exportar JSON (Web)</button>
+        <button class="btn-action" style="background: #0284c7;" onclick="exportPlatform('android')">🤖 Android strings.xml</button>
+        <button class="btn-action" style="background: #475569;" onclick="exportPlatform('ios')">🍎 iOS Localizable.strings</button>
       </div>
     </div>
 
-    <footer>
-      <div>
-        <strong>Model Based Design Platform For Engineers</strong> — Licença MIT · Zero Runtime Dependencies.
+    <!-- Painel 2: Validador de Sintaxe ICU & Pluralização -->
+    <div class="panel">
+      <h2>Validador ICU de Plurais</h2>
+      <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 12px;">Interpolação de variáveis e tratamento semântico de regras de plural:</p>
+
+      <div style="font-family: var(--font-mono); font-size: 0.78rem; background: #f5f5f4; padding: 10px; border-radius: 6px; margin-bottom: 12px;">
+        {count, plural, =0{Nenhum item pendente} one{1 item processado} other{# itens processados}}
       </div>
-      <div>
-        Desenvolvido por <a href="https://github.com/FelipeMadson" target="_blank" style="color:var(--green); text-decoration:none; font-weight:700;">Felipe Madison (@FelipeMadson)</a>
+
+      <label style="font-size: 0.8rem; font-weight: 700; color: var(--muted); display: block; margin-bottom: 6px;">
+        Simular Valor de Contagem (count = <span id="countVal" style="color: var(--violet);">0</span>):
+      </label>
+      <input type="range" id="countRange" min="0" max="10" value="0" oninput="updatePlural(this.value)" />
+
+      <div style="margin-top: 14px; background: var(--violet-light); border: 1px solid #ddd6fe; border-radius: 8px; padding: 12px;">
+        <div style="font-size: 0.75rem; color: var(--violet); font-weight: 700; text-transform: uppercase;">Resultado Formatado:</div>
+        <div id="pluralOut" style="font-weight: 600; font-size: 0.95rem; margin-top: 4px; color: #1c1917;">Nenhum item pendente</div>
       </div>
-    </footer>
+
+      <div class="code-preview" id="exportBox">// Clique em um dos botões de exportação para inspecionar o código gerado...</div>
+    </div>
   </div>
 
+  <footer>
+    <div>Engenharia de Alta Resiliência — <strong>Model Based Design Platform For Engineers</strong></div>
+    <div>Sistemas para Internet • <strong>Felipe Madison</strong> • Licença MIT</div>
+  </footer>
+
   <script>
-    // --- 1. WebCrypto HMAC Simulator ---
-    async function computeHmacSignature() {
-      const secret = document.getElementById("hmacSecret").value;
-      const payload = document.getElementById("hmacPayload").value;
-      const logBox = document.getElementById("hmacLog");
+    function updatePlural(val) {
+      document.getElementById('countVal').textContent = val;
+      const num = parseInt(val, 10);
+      const out = document.getElementById('pluralOut');
+      if (num === 0) out.textContent = 'Nenhum item pendente';
+      else if (num === 1) out.textContent = '1 item processado';
+      else out.textContent = num + ' itens processados com sucesso';
+    }
 
-      try {
-        const enc = new TextEncoder();
-        const keyData = enc.encode(secret);
-        const cryptoKey = await crypto.subtle.importKey(
-          "raw", keyData, { name: "HMAC", hash: "SHA-256" }, false, ["sign", "verify"]
-        );
-        const signature = await crypto.subtle.sign("HMAC", cryptoKey, enc.encode(payload));
-        const hashArray = Array.from(new Uint8Array(signature));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
-
-        logBox.innerText = [
-          "✔ Chave importada com sucesso (Algoritmo: HMAC-SHA256)",
-          "✔ Assinatura gerada: sha256=" + hashHex,
-          "✔ Verificação Timing-Safe Equal: VALIDADO (0ms side-channel leak)",
-          "✔ Status: 100% Criptograficamente Íntegro"
-        ].join("\n");
-      } catch (err) {
-        logBox.innerText = "Erro ao calcular HMAC: " + err.message;
+    function exportPlatform(type) {
+      const box = document.getElementById('exportBox');
+      if (type === 'json') {
+        box.textContent = JSON.stringify({
+          "app.title": "Plataforma Corporativa",
+          "btn.checkout": "Confirmar & Publicar",
+          "alert.success": "Alterações salvas com sucesso"
+        }, null, 2);
+      } else if (type === 'android') {
+        box.textContent = 
+          '<?xml version="1.0" encoding="utf-8"?>\n' +
+          '<resources>\n' +
+          '  <string name="app_title">Plataforma Corporativa</string>\n' +
+          '  <string name="btn_checkout">Confirmar &amp; Publicar</string>\n' +
+          '  <string name="alert_success">Alterações salvas com sucesso</string>\n' +
+          '</resources>';
+      } else if (type === 'ios') {
+        box.textContent = 
+          '/* Localizable.strings (pt-BR) */\n' +
+          '"app.title" = "Plataforma Corporativa";\n' +
+          '"btn.checkout" = "Confirmar & Publicar";\n' +
+          '"alert.success" = "Alterações salvas com sucesso";\n';
       }
-    }
-
-    // --- 2. Token Bucket Simulator ---
-    let capacity = 5;
-    let tokens = 5;
-    const refillRate = 2; // per sec
-
-    function updateBucketCap(val) {
-      capacity = Number(val);
-      document.getElementById("capacityVal").innerText = capacity + " tokens";
-      if (tokens > capacity) tokens = capacity;
-      updateBucketUi();
-    }
-
-    setInterval(() => {
-      if (tokens < capacity) {
-        tokens = Math.min(capacity, tokens + refillRate);
-        updateBucketUi();
-      }
-    }, 1000);
-
-    function updateBucketUi() {
-      document.getElementById("tokensAvailable").innerText = Math.floor(tokens);
-    }
-
-    function acquireToken() {
-      const log = document.getElementById("bucketLog");
-      if (tokens >= 1) {
-        tokens -= 1;
-        updateBucketUi();
-        log.innerText = "✔ [HTTP 200 OK] Token adquirido com sucesso. Restam: " + Math.floor(tokens);
-      } else {
-        log.innerText = "✖ [HTTP 429 TOO MANY REQUESTS] Cota esgotada! Bloqueio temporário até recarga.";
-      }
-    }
-
-    function acquireBurst(count) {
-      const log = document.getElementById("bucketLog");
-      if (tokens >= count) {
-        tokens -= count;
-        updateBucketUi();
-        log.innerText = "✔ [HTTP 200 OK] Rajada de " + count + " tokens aceita. Restam: " + Math.floor(tokens);
-      } else {
-        log.innerText = "✖ [HTTP 429 TOO MANY REQUESTS] Rejeitado! Cota insuficiente para rajada de " + count + ".";
-      }
-    }
-
-    // --- 3. WAL Journal Simulator ---
-    const walStore = [];
-    function appendWalRecord() {
-      const val = document.getElementById("walRecordInput").value;
-      const entry = { id: walStore.length + 1, data: val, ts: new Date().toISOString() };
-      walStore.push(entry);
-      renderWal();
-    }
-
-    function renderWal() {
-      const log = document.getElementById("walLog");
-      log.innerText = walStore.map(e => "#" + e.id + " [" + e.ts.slice(11, 19) + "] " + e.data).join("\n");
-    }
-
-    function simulateWalCrashAndReplay() {
-      const log = document.getElementById("walLog");
-      log.innerText = "💥 Crash simulado no processo! Memória volátil limpa.\n↻ Iniciando recuperação determinística via diário WAL...\n" +
-        walStore.map(e => "  ➔ Replay do registro #" + e.id + " validado por checksum SHA-256").join("\n") +
-        "\n✔ Estado 100% restaurado com integridade ACID garantida!";
-    }
-
-    // --- 4. Prometheus Simulator ---
-    let totalReqs = 0;
-    function generateSimulatedTraffic() {
-      totalReqs += 100;
-      const p50 = (0.2 + Math.random() * 0.3).toFixed(2);
-      const p95 = (0.7 + Math.random() * 0.4).toFixed(2);
-      const p99 = (1.1 + Math.random() * 0.5).toFixed(2);
-
-      document.getElementById("p50Val").innerText = p50 + " ms";
-      document.getElementById("p95Val").innerText = p95 + " ms";
-      document.getElementById("p99Val").innerText = p99 + " ms";
-
-      document.getElementById("promMetricsLog").innerText = [
-        "# HELP app_http_requests_total Total requests processed",
-        "app_http_requests_total " + totalReqs,
-        "# HELP app_p50_latency_ms Mediana P50",
-        "app_p50_latency_ms " + p50,
-        "# HELP app_p95_latency_ms Percentil P95",
-        "app_p95_latency_ms " + p95,
-        "# HELP app_p99_latency_ms Percentil P99",
-        "app_p99_latency_ms " + p99
-      ].join("\n");
     }
   </script>
 </body>
