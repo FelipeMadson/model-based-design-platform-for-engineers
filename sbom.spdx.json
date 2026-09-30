@@ -1,0 +1,46 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "Model Based Design Platform For Engineers SBOM",
+  "documentNamespace": "https://github.com/FelipeMadson/model-based-design-platform-for-engineers/spdxdocs/model-based-design-platform-for-engineers-1.0.0-25ce99b4-d532-4e09-b406-d132fe846641",
+  "creationInfo": {
+    "created": "2026-09-30T15:18:13.496Z",
+    "creators": [
+      "Person: Felipe Madison (@FelipeMadson)",
+      "Organization: Autonomous Portfolio Engine — Staff Engineering Grade",
+      "Tool: SecurityCiGenerator-1.0.0"
+    ],
+    "licenseListVersion": "3.21"
+  },
+  "packages": [
+    {
+      "name": "model-based-design-platform-for-engineers",
+      "SPDXID": "SPDXRef-Package-model-based-design-platform-for-engineers",
+      "versionInfo": "1.0.0",
+      "packageFileName": "model-based-design-platform-for-engineers-1.0.0.tar.gz",
+      "packageSupplier": "Person: Felipe Madison (https://github.com/FelipeMadson)",
+      "originator": "Person: Felipe Madison (https://github.com/FelipeMadson)",
+      "downloadLocation": "git+https://github.com/FelipeMadson/model-based-design-platform-for-engineers.git@v1.0.0",
+      "filesAnalyzed": false,
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "7829338605b14f48ac471edda45f49728812d782c84695d3ff4e6e9f5feed362"
+        }
+      ],
+      "homepage": "https://github.com/FelipeMadson/model-based-design-platform-for-engineers",
+      "concludedLicense": "MIT",
+      "declaredLicense": "MIT",
+      "copyrightText": "Copyright (c) 2026 Felipe Madison (@FelipeMadson)",
+      "description": "Enterprise-grade production release for Model Based Design Platform For Engineers, engineered by Felipe Madison."
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-Package-model-based-design-platform-for-engineers",
+      "relationshipType": "DESCRIBES"
+    }
+  ]
+}
