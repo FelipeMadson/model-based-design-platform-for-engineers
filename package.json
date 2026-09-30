@@ -1,6 +1,6 @@
 {
   "name": "model-based-design-platform-for-engineers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Engineers and scientists use outdated, monolithic tools for complex system design and simulation tasks.",
   "type": "module",
   "main": "src/index.ts",
